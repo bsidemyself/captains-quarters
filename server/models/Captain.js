@@ -15,6 +15,7 @@ const captainSchema = new Schema ({
       gear: [],
       slots: 6,
       background: "",
+      
     },
     firstMate: [
       {
