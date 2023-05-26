@@ -1,75 +1,21 @@
 const { Schema, model } = require('mongoose');
-import { Captain } from "./Captain";
 
-const firstMateSchema = new Schema (
-        {
+const firstmateSchema =  new Schema({
         name: {
-        type: String
-        }
+            type: String,
         },
-       { 
-        specialty: {
-       type: String
-        }
+        background: {
+            type: String,
         },
-        {
-            level: {
-                type: Number
-            }
+        stats: {
+            type: Object,
         },
-
-        {
-            move: {
-                type: Number
-            }
+        powers: {
+            type: Array,
         },
-       { 
-        fight: {
-            type: Number
-        }
-    },
-        {
-    shoot: {
-        type: Number
     }
-        },
-       { 
-        armor: {
-            type: Number
-        }
-    },
-       {
-         will: {
-            type: Number
-         }
-    },
-       {
-         health: {
-            type: Number
-         }
-    },
-      { 
-         gear: []
-    },
-        {
-            slots: {
-                type: Number
-            }
-        },
-        {
-            background: {
-                type: String
-            }
-        },
-        {
-    captain: [
-        {
-            type: Schema.Types.ObjectId,
-            ref: 'Captain'
-        }
-        ]
-})
+);    
 
-const FirstMate = model('FirstMate', firstMateSchema);
+const FirstMate = model('FirstMate', firstmateSchema);
 
 module.exports = FirstMate;
