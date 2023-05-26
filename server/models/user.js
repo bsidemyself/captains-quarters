@@ -1,4 +1,5 @@
-const { Schema, model } = require('mongoose');
+const mongoose = require('mongoose');
+const { Schema, model } = mongoose;
 const bcrypt = require('bcrypt');
 
 const captainSchema = require('./Captain');
@@ -22,7 +23,13 @@ password: {
     required: true,
 },
 
-Captain: [captainSchema],
+captain: [
+    {
+        type: Schema.Types.ObjectId,
+        ref: 'Captain',
+    },
+],
+   
 },
 
 {

@@ -27,11 +27,13 @@ const captainSchema = new Schema({
             ref: 'FirstMate'
         }
     ],
+
     crewMembers: [
         {
             type: Schema.Types.ObjectId,
             ref: 'CrewChoice'
         }
+
     ]
 });
 

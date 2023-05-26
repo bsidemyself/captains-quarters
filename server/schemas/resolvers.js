@@ -21,21 +21,63 @@ const resolvers = {
             return { token, user };
            },
 
-        login: async (parent, { email, password }) => {
-            const user = await User.findOne({ email });
+        login: async (parent, { username, password }) => {
+            const user = await User.findOne({ username });
 
             if (!user) {
-                throw AuthenticationError('No user found with that email, please try another.');
+                throw AuthenticationError('No user found with that username, please try another.');
             }
             const pw = await user.isCorrectPassword(password);
             if (!pw) {
                 throw AuthenticationError('The password or username is incorrect, please try again.');
             }
             const token = signToken(user);
-            return {user, token };
+            return user{user, token };
         },
 
-        createCaptain: async (parent, { })
+        createCaptain: async (parent, { Captain }, context) => {
+           if (context.user) {
+          return User.findOneAndUpdate(
+            {
+                $addToSet: { Captain: Captain },
+            },
+            {
+                new: true,
+                runValidators: true,
+            }
+          );
+
+            // await User.findByIdAndUpdate(context.user.id, { $push: { Captain: Captain },
+            // });
+
+            // return captain;
+           }
+        },
+
+    deleteCaptain: async (parent, { captainId }, context) => {
+        if (context.user) {
+            const updatedUser = await User.findOneAndDelete({
+                _id: captainId,
+                $pull: context.user.username,
+                new: true,
+            });
+            await User.findOneAndUpdate(
+                { _id: context.user._id},
+                { $pull: { captain: { captainId: captainId} }},
+                { new: true }
+            );
+            return updatedUser;
+        }
+    },
+    updateCaptain: async (parent, { captainId }, context ) => {
+        if (context.user) {
+        const captain = await Captain.findByIdAndUpdate(
+            id,
+            { new: true }
+        );
+        return captain;
+    }
 
     }
-}
+    }
+};
