@@ -1,6 +1,6 @@
 const { Schema, model } = require('mongoose');
 
-const completeCaptainSchema = new Schema({
+const completedCaptainSchema = new Schema({
     name: {
         type: String,
         required: true,
@@ -38,6 +38,6 @@ const completeCaptainSchema = new Schema({
     }
 });
 
-const CompleteCaptain = model('CompleteCaptain', completeCaptainSchema);
+const CompletedCaptain = model('CompletedCaptain', completedCaptainSchema);
 
-module.exports = CompleteCaptain;
+module.exports = CompletedCaptain;

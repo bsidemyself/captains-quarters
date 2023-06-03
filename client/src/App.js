@@ -63,22 +63,22 @@ function App() {
                 path="/signup"
                 element={<Signup />}
               />
-              <Route
+              {/* <Route
                 path="/me"
                 element={<Profile />}
-              />
-              <Route
+              /> */}
+              {/* <Route
                 path="/profiles/:username"
                 element={<Profile />}
-              />
-              <Route
+              /> */}
+              {/* <Route
                 path="/captains/:captainId"
                 element={<Captain />}
               />
               <Route
                 path="/Captain"
                 element={<Captain />}
-              />
+              /> */}
               <Route
               path='/CrewCreation'
               element={<CrewCreation />}

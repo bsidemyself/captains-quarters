@@ -8,7 +8,7 @@ const typeDefs = gql`
         username: String
         email: String
         password: String
-        completedcaptains: [CompleteCaptain]
+        completedcaptains: [CompletedCaptain]
     }
 
 
@@ -20,15 +20,15 @@ const typeDefs = gql`
     type Query {
         users: [User]
         user(username: String!): User
-        completecaptains(name: String): [CompleteCaptain]
-        completecaptain(completecaptainId: ID): CompleteCaptain
+        completedcaptains(name: String): [CompletedCaptain]
+        completedcaptain(completedcaptainId: ID): CompletedCaptain
         me: User
     }
 
     type Mutation {
         addUser(username: String!, email: String!, password: String!): Auth
         login(username: String!, password: String!): Auth
-        addCompletedCaptain(name: String!, level: Number, move: Number, fight: Number, shoot: Number, armor: Number, will: Number, health: Number, background: String, corePowers: Array, generalPowers: Array): CompleteCaptain
+        addCompletedCaptain(name: String!, level: Int, move: Int, fight: Int, shoot: Int, armor: Int, will: Int, health: Int, background: String, corePowers: [String], generalPowers: [String]): CompletedCaptain
     }
 `;
 // Credit to Dillon!!!!

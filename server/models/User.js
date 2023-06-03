@@ -22,7 +22,7 @@ const userSchema = new Schema({
   completedcaptains: [
     {
       type: Schema.Types.ObjectId,
-      ref: 'CompleteCaptain',
+      ref: 'CompletedCaptain',
     },
   ],
 });

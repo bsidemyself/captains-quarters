@@ -1,22 +1,22 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User, CompleteCaptain } = require('../models');
+const { User, CompletedCaptain } = require('../models');
 const { signToken } = require('../utils/auth');
 
 
 const resolvers = {
     Query: {
         users: async () => {
-            return User.find().populate('captains');
+            return User.find().populate('completedcaptains');
         },
         user: async (parent, { username }) => {
-            return User.findOne({ username }).populate('captains');
+            return User.findOne({ username }).populate('completedcaptains');
         },
-        completecaptains: async (parent, { username }) => {
+        completedcaptains: async (parent, { username }) => {
             const params = username ? { username } : {};
-            return CompleteCaptain.find(params);
+            return CompletedCaptain.find(params);
         },
-        completecaptain: async (parent, { captainId }) => {
-            return CompleteCaptain.findOne({ _id: captainId });
+        completedcaptain: async (parent, { completedcaptainId }) => {
+            return CompletedCaptain.findOne({ _id: completedcaptainId });
         },
         me: async (parent, args, context) => {
             if (context.user) {
@@ -50,7 +50,7 @@ const resolvers = {
         
         addCompletedCaptain: async (parent, { name, level, move, fight, shoot, armor, will, health, background, corePowers, generalPowers }, context) => {
             if (context.user) {
-                const completecaptain = await CompleteCaptain.create({
+                const completedcaptain = await CompletedCaptain.create({
                     name,
                     level,
                     move,
@@ -65,9 +65,9 @@ const resolvers = {
                 });
                 await User.findOneAndUpdate(
                     { _id: context.user._id },
-                    { $addToSet: { completedcaptains: completecaptain._id}}
+                    { $addToSet: { completedcaptains: completedcaptain._id}}
                 );
-                return completecaptain;
+                return completedcaptain;
             }
         } 
 
