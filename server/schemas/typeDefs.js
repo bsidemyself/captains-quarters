@@ -8,7 +8,23 @@ const typeDefs = gql`
         username: String
         email: String
         password: String
-        completedcaptains: [CompletedCaptain]
+        completedcaptains: [CompletedCaptain]!
+    }
+
+    type CompletedCaptain {
+        _id: ID
+        name: String!, 
+        level: Int, 
+        move: Int, 
+        fight: Int, 
+        shoot: Int, 
+        armor: Int, 
+        will: Int, 
+        health: Int, 
+        background: String, 
+        corePowers: [String], 
+        generalPowers: [String]
+
     }
 
 
