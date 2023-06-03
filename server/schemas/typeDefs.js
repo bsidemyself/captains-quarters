@@ -1,17 +1,14 @@
 const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`
-type Captain {
-    name: String
 
-}
 
-    type User {
+   type User {
         _id: ID
         username: String
         email: String
         password: String
-        captains: [Captain]
+        completedcaptains: [CompleteCaptain]
     }
 
 
@@ -23,15 +20,15 @@ type Captain {
     type Query {
         users: [User]
         user(username: String!): User
-        captains(name: String): [Captain]
-        captain(captainId: ID): Captain
+        completecaptains(name: String): [CompleteCaptain]
+        completecaptain(completecaptainId: ID): CompleteCaptain
         me: User
     }
 
     type Mutation {
-        login(username: String!, password: String!): Auth
         addUser(username: String!, email: String!, password: String!): Auth
-        createCaptain(name: String!): Auth
+        login(username: String!, password: String!): Auth
+        addCompletedCaptain(name: String!, level: Number, move: Number, fight: Number, shoot: Number, armor: Number, will: Number, health: Number, background: String, corePowers: Array, generalPowers: Array): CompleteCaptain
     }
 `;
 // Credit to Dillon!!!!

@@ -14,7 +14,7 @@ export const QUERY_USER = gql`
         user(username: $username) {
             _id
             username
-            captains {
+            completedcaptains {
                 _id
                 name
             }
@@ -22,33 +22,40 @@ export const QUERY_USER = gql`
     }
 `;
 
-export const QUERY_CAPTAINS = gql`
-    query allCaptains {
-        captains {
+export const QUERY_COMPLETEDCAPTAINS = gql`
+    query completecaptains {
+        completecaptains {
             _id
             name
+            level
+            move
+            fight
+            shoot
+            armor
+            will
+            health
+            background
+            corePowers
+            generalPowers
         }
     }
 `;
 
 export const QUERY_SINGLE_CAPTAIN = gql`
-    query oneCaptain($captainId: ID!) {
-        captain(captainId: $captainId) {
+    query completecaptain($completecaptainId: ID!) {
+        completecaptain(completecaptainId: $completecaptainId) {
             _id
             name
-            background {
-                name
-                stats
-                corePowers
-            }
-            firstMate {
-                name
-                background
-            }
-            crewMembers {
-                name
-                background
-            }
+            level
+            move
+            fight
+            shoot
+            armor
+            will
+            health
+            background
+            corePowers
+            generalPowers
         }
     }
 `;
@@ -58,9 +65,19 @@ export const QUERY_ME = gql`
     me {
       _id
       username
-      captains {
+      completedcaptains {
         _id
         name
+        level
+        move
+        fight
+        shoot
+        armor
+        will
+        health
+        background
+        corePowers
+        generalPowers
       }
     }
   }

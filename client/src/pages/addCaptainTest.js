@@ -73,7 +73,7 @@ const CompletedCaptainForm = () => {
               <textarea
                 name="thoughtText"
                 placeholder="Here's a new thought..."
-                value={thoughtText}
+                value={CompletedCaptain}
                 className="form-input w-100"
                 style={{ lineHeight: '1.5', resize: 'vertical' }}
                 onChange={handleChange}
