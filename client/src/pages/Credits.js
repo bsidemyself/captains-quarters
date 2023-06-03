@@ -3,7 +3,7 @@ import React from 'react';
 
 const Credits = () => {
     return (
-        <>
+        <main className = 'credits-bg-photo'>
        <div></div>
       <div className="card">
   <div className="content">
@@ -43,7 +43,7 @@ const Credits = () => {
   </div>
 </div>
 
-    </>
+    </main>
     ) 
     
         }
